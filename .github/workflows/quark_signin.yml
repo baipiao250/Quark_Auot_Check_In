@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 检出代码
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 随机延迟（早上）
         if: github.event.schedule == '0 1 * * *'
@@ -30,7 +30,7 @@ jobs:
       - name: 设置Python环境
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: '3.10'
 
       - name: 安装依赖
         run: pip install requests
@@ -54,7 +54,7 @@ jobs:
           git push
 
       - name: 清理旧的工作流记录
-        uses: yxdz2020/delete-workflow-runs@v20251112
+        uses: yxdz2020/delete-workflow-runs@v20260116
         with:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
